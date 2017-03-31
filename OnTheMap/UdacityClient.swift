@@ -65,16 +65,18 @@ class UdacityClient: NSObject {
                 return
             }
             
-            // GUARD, was tehre any data returned?
+            // GUARD, was there any data returned?
             guard let data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
             
-            print("Data: \(NSString(data: data, encoding:String.Encoding.utf8.rawValue)!)")
+            // Get rid of those stupid first 5 characters 😖
+            let range = Range(uncheckedBounds: (5, data.count))
+            let trimmedData = data.subdata(in: range)
             
             // Parse and use data
-            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPost)
+            self.convertDataWithCompletionHandler(trimmedData, completionHandlerForConvertData: completionHandlerForPost)
             
         }
         
