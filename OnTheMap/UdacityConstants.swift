@@ -13,6 +13,9 @@ extension UdacityClient {
     // MARK: API Constants
     struct Constants {
         
+        // MARK: API Key
+        static let ApiKey = ""
+        
         // MARK: URLs
         static let ApiScheme = "https"
         static let ApiHost = "www.udacity.com"

@@ -12,7 +12,23 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        //postSession
+        UdacityClient.sharedInstance().postSession("tooley7@gmail.com", password: "W4]4iDKHdVfmH,Cv") { (statusCode, error) in
+            if let error = error {
+                print(error)
+            } else {
+                print("status code: \(statusCode)")
+                
+                if statusCode == 1 {
+                    print("Success!")
+                    // TODO: Update UI
+                } else {
+                    print("Unknown status code")
+                }
+            }
+            
+        }
     }
 
     override func didReceiveMemoryWarning() {

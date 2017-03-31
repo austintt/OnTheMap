@@ -15,6 +15,7 @@
 		D97ABD501E748DB30074EA22 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD4F1E748DB30074EA22 /* GCDBlackBox.swift */; };
 		D97ABD5B1E748EA30074EA22 /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5A1E748EA30074EA22 /* UdacityConstants.swift */; };
 		D97ABD5D1E7490520074EA22 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5C1E7490520074EA22 /* UdacityClient.swift */; };
+		D97ABD5F1E74A5930074EA22 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		D97ABD4F1E748DB30074EA22 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		D97ABD5A1E748EA30074EA22 /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
 		D97ABD5C1E7490520074EA22 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				D97ABD5A1E748EA30074EA22 /* UdacityConstants.swift */,
 				D97ABD5C1E7490520074EA22 /* UdacityClient.swift */,
+				D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */,
 			);
 			name = Udacity;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				D97ABD501E748DB30074EA22 /* GCDBlackBox.swift in Sources */,
 				D97ABD5B1E748EA30074EA22 /* UdacityConstants.swift in Sources */,
 				D97ABD3E1E748C5E0074EA22 /* AppDelegate.swift in Sources */,
+				D97ABD5F1E74A5930074EA22 /* UdacityConvenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
