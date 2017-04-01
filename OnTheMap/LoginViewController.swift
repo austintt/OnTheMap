@@ -24,9 +24,20 @@ class LoginViewController: UIViewController {
         errorLabel.isHidden = true
     }
     
-    func setErrorMessage(message: String) {
+    private func setErrorMessage(message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
+    }
+    
+    private func completeLogin() {
+        // Clear inputs/labels
+        errorLabel.isHidden = true
+        usernameInput.text = ""
+        passwordInput.text = ""
+        
+        // Segue
+        let controller = storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as! UINavigationController
+        present(controller, animated: true, completion: nil)
     }
     
     // Dierect user to webview of Udacity account signup page
@@ -39,11 +50,14 @@ class LoginViewController: UIViewController {
 
     // Authenticate the user
     @IBAction func login(_ sender: Any) {
+        //Hide error label
+        errorLabel.isHidden = true
+        
         // Grab the username and password
-        if let username = usernameInput.text, let password = passwordInput.text {
+        if (usernameInput.text! != "" && passwordInput.text! != "") {
             
             // Get the session via postSession()
-            UdacityClient.sharedInstance().postSession(username, password: password) { (didSucceed, error) in
+            UdacityClient.sharedInstance().postSession(usernameInput.text!, password: passwordInput.text!) { (didSucceed, error) in
                 // Display error
                 if let error = error {
                     print(error)
@@ -53,6 +67,9 @@ class LoginViewController: UIViewController {
                     if didSucceed {
                         print("Success!")
                         // TODO: Update UI
+                        performUIUpdatesOnMain {
+                            self.completeLogin()
+                        }
                     } else {
                         // Display error
                         print("Post session did not succeed")
@@ -60,6 +77,8 @@ class LoginViewController: UIViewController {
                     }
                 }
             }
+        } else {
+            self.setErrorMessage(message: "Enter email and password to login")
         }
     }
 }

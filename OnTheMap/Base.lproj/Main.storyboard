@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -82,6 +83,64 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="8VU-om-4Ej">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="21M-f5-9Bh" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kwt-JX-Jnh"/>
+                        <viewControllerLayoutGuide type="bottom" id="A6o-Fd-Ls5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mp0-SR-GuW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-Jb-2Ua">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eo2-Jb-2Ua" secondAttribute="trailing" id="Hxh-3x-qte"/>
+                            <constraint firstItem="eo2-Jb-2Ua" firstAttribute="top" secondItem="kwt-JX-Jnh" secondAttribute="bottom" id="IcG-4W-7IT"/>
+                            <constraint firstItem="eo2-Jb-2Ua" firstAttribute="leading" secondItem="Mp0-SR-GuW" secondAttribute="leading" id="Tw3-6V-fjv"/>
+                            <constraint firstItem="eo2-Jb-2Ua" firstAttribute="bottom" secondItem="A6o-Fd-Ls5" secondAttribute="top" id="XHk-Eo-X99"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sb0-lX-z5G">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="V0f-6H-fjx">
+                            <connections>
+                                <action selector="logout:" destination="21M-f5-9Bh" id="Lq8-tT-fpd"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="7ps-QV-Lmb"/>
+                            <barButtonItem title="Pin" id="IEk-Hx-KrB"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mcA-Uv-RNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832.8" y="143.47826086956522"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ABo-WK-Svm">
+            <objects>
+                <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tl9-Hc-p1t" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="879-aI-N5n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="21M-f5-9Bh" kind="relationship" relationship="rootViewController" id="B26-Cc-JxT"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wru-Ql-9cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="144.3778110944528"/>
         </scene>
     </scenes>
 </document>
