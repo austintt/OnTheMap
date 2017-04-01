@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     
     
@@ -34,6 +35,7 @@ class LoginViewController: UIViewController {
         errorLabel.isHidden = true
         usernameInput.text = ""
         passwordInput.text = ""
+        spinner.stopAnimating()
         
         // Segue
         let controller = storyboard!.instantiateViewController(withIdentifier: "MapNavigationController") as! UINavigationController
@@ -52,6 +54,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: Any) {
         //Hide error label
         errorLabel.isHidden = true
+        spinner.startAnimating()
         
         // Grab the username and password
         if (usernameInput.text! != "" && passwordInput.text! != "") {
@@ -61,6 +64,7 @@ class LoginViewController: UIViewController {
                 // Display error
                 if let error = error {
                     print(error)
+                    self.spinner.stopAnimating()
                     self.setErrorMessage(message: "Error logging in")
                 } else {
                     print("Post session did succeed: \(didSucceed)")
@@ -71,6 +75,7 @@ class LoginViewController: UIViewController {
                             self.completeLogin()
                         }
                     } else {
+                        self.spinner.stopAnimating()
                         // Display error
                         print("Post session did not succeed")
                         self.setErrorMessage(message: "Error logging in")

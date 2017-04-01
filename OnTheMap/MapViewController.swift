@@ -27,7 +27,9 @@ class MapViewController: UIViewController {
         UdacityClient.User.accountKey = ""
         
         // Return to login
-        dismiss(animated: true, completion: nil)
+        performUIUpdatesOnMain {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     // Pins

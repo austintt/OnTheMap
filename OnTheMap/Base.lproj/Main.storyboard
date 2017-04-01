@@ -59,6 +59,10 @@
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3y6-eC-z1c">
+                                <rect key="frame" x="177" y="369" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -77,6 +81,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="uBA-sU-mWn" id="d9A-06-wa6"/>
                         <outlet property="passwordInput" destination="lsW-Vw-oou" id="e18-q5-DnU"/>
+                        <outlet property="spinner" destination="3y6-eC-z1c" id="Ebd-oK-Fnr"/>
                         <outlet property="usernameInput" destination="96v-6O-7jf" id="4lC-IW-Ltr"/>
                     </connections>
                 </viewController>
