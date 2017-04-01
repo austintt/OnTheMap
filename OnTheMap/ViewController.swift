@@ -14,20 +14,19 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         //postSession
-        UdacityClient.sharedInstance().postSession("tooley7@gmail.com", password: "W4]4iDKHdVfmH,Cv") { (statusCode, error) in
+        UdacityClient.sharedInstance().postSession("tooley7@gmail.com", password: "W4]4iDKHdVfmH,Cv") { (didSucceed, error) in
             if let error = error {
                 print(error)
             } else {
-                print("status code: \(statusCode)")
+                print("Post session did succeed: \(didSucceed)")
                 
-                if statusCode == 1 {
+                if didSucceed {
                     print("Success!")
                     // TODO: Update UI
                 } else {
-                    print("Unknown status code")
+                    print("Post session did not succeed")
                 }
             }
-            
         }
     }
 

@@ -59,7 +59,14 @@ extension UdacityClient {
     
     }
     
-    
+    // Mark: User 
+    struct User {
+        static var sessionID = ""
+        static var accountKey = ""
+        static var firstName = ""
+        static var lastName = ""
+        static var mapString = ""
+    }
     
     
 }

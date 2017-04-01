@@ -10,7 +10,7 @@ import Foundation
 
 extension UdacityClient {
     
-    func postSession(_ username: String, password: String, completionHandlerForSession: @escaping (_ result: Int?, _ error: NSError?) -> Void) {
+    func postSession(_ username: String, password: String, completionHandlerForSession: @escaping (_ didSucceed: Bool, _ error: NSError?) -> Void) {
         
         // Specify parameters, method, and http body
         let parameters = [String:AnyObject]()
@@ -24,12 +24,25 @@ extension UdacityClient {
         
             // Send values to completion handler
             if let error = error {
-                completionHandlerForSession(nil, error)
+                completionHandlerForSession(false, error)
             } else {
-                if let results = results?[UdacityClient.JSONResponseKeys.StatusCode] as? Int {
-                    completionHandlerForSession(results, nil)
+                print("Results!: \(results)")
+                // Set session
+                if let sessionResult = results?[UdacityClient.JSONResponseKeys.Session] as? [String: AnyObject] {
+                    UdacityClient.User.sessionID = sessionResult[UdacityClient.JSONResponseKeys.Id] as! String
+                    print(UdacityClient.User.sessionID)
+                }
+                // Set key
+                if let keyResult = results?[UdacityClient.JSONResponseKeys.Account] as? [String: AnyObject] {
+                    UdacityClient.User.accountKey = keyResult[UdacityClient.JSONResponseKeys.Key] as! String
+                    print(UdacityClient.User.accountKey)
+                // Else error
                 } else {
-                    completionHandlerForSession(nil, NSError(domain: "postSession parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postSession!"]))
+                    completionHandlerForSession(false, NSError(domain: "postSession parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postSession!"]))
+                }
+                // Successful
+                if (results?[UdacityClient.JSONResponseKeys.Registered] != nil) {
+                    completionHandlerForSession(true, nil)
                 }
             }
         }
