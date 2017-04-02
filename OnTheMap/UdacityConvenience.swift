@@ -8,19 +8,20 @@
 
 import Foundation
 
-extension UdacityClient {
+extension ServiceManager {
     
     func postSession(_ username: String, password: String, completionHandlerForSession: @escaping (_ didSucceed: Bool, _ error: NSError?) -> Void) {
         
         // Specify parameters, method, and http body
         let parameters = [String:AnyObject]()
         let method: String = Methods.Session
-        let jsonBody = "{\"\(UdacityClient.JSONBodyKeys.Udacity)\": {\"\(UdacityClient.JSONBodyKeys.Username)\":\"\(username)\", \"\(UdacityClient.JSONBodyKeys.Password)\":\"\(password)\"}}"
+        let url = udacityURLFromParameters(parameters, withPathExtension: method)
+        let jsonBody = "{\"\(ServiceManager.JSONBodyKeys.Udacity)\": {\"\(ServiceManager.JSONBodyKeys.Username)\":\"\(username)\", \"\(ServiceManager.JSONBodyKeys.Password)\":\"\(password)\"}}"
         print("Body: \(jsonBody)")
         
         
         // Make request
-        let _ = taskForPostMethod(method, parameters: parameters as [String:AnyObject], jsonBody: jsonBody) { (results, error) in
+        let _ = taskForPostMethod(url: url, jsonBody: jsonBody) { (results, error) in
         
             // Send values to completion handler
             if let error = error {
@@ -28,23 +29,44 @@ extension UdacityClient {
             } else {
                 print("Results!: \(results)")
                 // Set session
-                if let sessionResult = results?[UdacityClient.JSONResponseKeys.Session] as? [String: AnyObject] {
-                    UdacityClient.User.sessionID = sessionResult[UdacityClient.JSONResponseKeys.Id] as! String
-                    print(UdacityClient.User.sessionID)
+                if let sessionResult = results?[ServiceManager.JSONResponseKeys.Session] as? [String: AnyObject] {
+                    ServiceManager.User.sessionID = sessionResult[ServiceManager.JSONResponseKeys.Id] as! String
+                    print(ServiceManager.User.sessionID)
                 }
                 // Set key
-                if let keyResult = results?[UdacityClient.JSONResponseKeys.Account] as? [String: AnyObject] {
-                    UdacityClient.User.accountKey = keyResult[UdacityClient.JSONResponseKeys.Key] as! String
-                    print(UdacityClient.User.accountKey)
+                if let keyResult = results?[ServiceManager.JSONResponseKeys.Account] as? [String: AnyObject] {
+                    ServiceManager.User.accountKey = keyResult[ServiceManager.JSONResponseKeys.Key] as! String
+                    print(ServiceManager.User.accountKey)
                 // Else error
                 } else {
                     completionHandlerForSession(false, NSError(domain: "postSession parsing", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postSession!"]))
                 }
                 // Successful
-                if (results?[UdacityClient.JSONResponseKeys.Registered] != nil) {
+                if (results?[ServiceManager.JSONResponseKeys.Registered] != nil) {
                     completionHandlerForSession(true, nil)
                 }
             }
         }
     }
+    
+    // Create URL from params
+    private func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
+        
+        // Construct URL
+        var components = URLComponents()
+        components.scheme = ServiceManager.Constants.UdacityApiScheme
+        components.host = ServiceManager.Constants.UdacityApiHost
+        components.path = ServiceManager.Constants.UdacityApiPath + (withPathExtension ?? "")
+        
+        components.queryItems = [URLQueryItem]()
+        
+        // Add params
+        for (key, value) in parameters {
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components.url!
+    }
+
 }

@@ -8,18 +8,24 @@
 
 // MARK:  - UdacityClient (Constants)
 
-extension UdacityClient {
+extension ServiceManager {
     
     // MARK: API Constants
     struct Constants {
         
         // MARK: API Key
-        static let ApiKey = ""
+        static let parseApiKey = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
+        static let parseApplicationId = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         
-        // MARK: URLs
-        static let ApiScheme = "https"
-        static let ApiHost = "www.udacity.com"
-        static let ApiPath = "/api"
+        // MARK: Udacity URLs
+        static let UdacityApiScheme = "https"
+        static let UdacityApiHost = "www.udacity.com"
+        static let UdacityApiPath = "/api"
+        
+        // MARK: Parse URLs
+        static let ParseApiScheme = "https"
+        static let ParseApiHost = "parse.udacity.com"
+        static let ParseApiPath = "/parse/classes"
     }
     
     // MARK: Methods
@@ -27,10 +33,16 @@ extension UdacityClient {
         
         // MARK Session
         static let Session = "/session"
+        static let StudentLocation = "/StudentLocation"
     }
     
     // MARK: Prameter Keys
     struct ParemeterKeys {
+        static let Limit = "limit"
+        static let Skip = "skip"
+        static let Order = "order"
+        static let Where = "where"
+        static let UniqueKey = "uniqueKey"
     }
     
     // MARK: JSON Body Keys

@@ -10,10 +10,12 @@ import Foundation
 
 import UIKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, UINavigationControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Get 100 pins and display
         
     }
     
@@ -22,9 +24,11 @@ class MapViewController: UIViewController {
     // Mark: Navigation bar
     // Logout
     @IBAction func logout(_ sender: Any) {
+        print("Logging out")
+        
         // Wipe session
-        UdacityClient.User.sessionID = ""
-        UdacityClient.User.accountKey = ""
+        ServiceManager.User.sessionID = ""
+        ServiceManager.User.accountKey = ""
         
         // Return to login
         performUIUpdatesOnMain {

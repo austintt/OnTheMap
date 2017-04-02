@@ -89,49 +89,51 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="138.98050974512745"/>
         </scene>
-        <!--Map View Controller-->
-        <scene sceneID="8VU-om-4Ej">
+        <!--On The Map-->
+        <scene sceneID="G2M-fa-gse">
             <objects>
-                <viewController storyboardIdentifier="MapViewController" id="21M-f5-9Bh" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xw3-Ho-mF6" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="kwt-JX-Jnh"/>
-                        <viewControllerLayoutGuide type="bottom" id="A6o-Fd-Ls5"/>
+                        <viewControllerLayoutGuide type="top" id="LM9-yn-zDB"/>
+                        <viewControllerLayoutGuide type="bottom" id="l4w-W6-Ac2"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mp0-SR-GuW">
+                    <view key="view" contentMode="scaleToFill" id="9rW-tg-6k6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eo2-Jb-2Ua">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fse-TC-KTK">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eo2-Jb-2Ua" secondAttribute="trailing" id="Hxh-3x-qte"/>
-                            <constraint firstItem="eo2-Jb-2Ua" firstAttribute="top" secondItem="kwt-JX-Jnh" secondAttribute="bottom" id="IcG-4W-7IT"/>
-                            <constraint firstItem="eo2-Jb-2Ua" firstAttribute="leading" secondItem="Mp0-SR-GuW" secondAttribute="leading" id="Tw3-6V-fjv"/>
-                            <constraint firstItem="eo2-Jb-2Ua" firstAttribute="bottom" secondItem="A6o-Fd-Ls5" secondAttribute="top" id="XHk-Eo-X99"/>
+                            <constraint firstAttribute="trailing" secondItem="Fse-TC-KTK" secondAttribute="trailing" id="4jz-ck-e7T"/>
+                            <constraint firstItem="Fse-TC-KTK" firstAttribute="leading" secondItem="9rW-tg-6k6" secondAttribute="leading" id="Qew-c1-W2c"/>
+                            <constraint firstItem="Fse-TC-KTK" firstAttribute="bottom" secondItem="l4w-W6-Ac2" secondAttribute="top" id="f0V-4h-QDc"/>
+                            <constraint firstItem="Fse-TC-KTK" firstAttribute="top" secondItem="LM9-yn-zDB" secondAttribute="bottom" id="vUt-bt-Fn5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sb0-lX-z5G">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="V0f-6H-fjx">
+                    <tabBarItem key="tabBarItem" title="Item 1" id="o6V-0n-8eS"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="g9y-kU-svQ">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="rlR-sa-PMK">
                             <connections>
-                                <action selector="logout:" destination="21M-f5-9Bh" id="Lq8-tT-fpd"/>
+                                <action selector="logout:" destination="xw3-Ho-mF6" id="g3E-Fg-nyJ"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="7ps-QV-Lmb"/>
-                            <barButtonItem title="Pin" id="IEk-Hx-KrB"/>
+                            <barButtonItem title="Item" id="U03-Xr-Rw2"/>
+                            <barButtonItem title="Item" id="xZW-RD-al2"/>
                         </rightBarButtonItems>
                     </navigationItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mcA-Uv-RNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qva-n4-OG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832.8" y="143.47826086956522"/>
+            <point key="canvasLocation" x="1718" y="144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ABo-WK-Svm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wru-Ql-9cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tl9-Hc-p1t" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="879-aI-N5n">
@@ -140,10 +142,9 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="21M-f5-9Bh" kind="relationship" relationship="rootViewController" id="B26-Cc-JxT"/>
+                        <segue destination="xw3-Ho-mF6" kind="relationship" relationship="rootViewController" id="W9I-YU-1KY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wru-Ql-9cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="144.3778110944528"/>
         </scene>

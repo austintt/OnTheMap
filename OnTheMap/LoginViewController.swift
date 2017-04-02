@@ -16,10 +16,12 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Debug
+        usernameInput.text = "Tooley7@gmail.com"
+        passwordInput.text = "4iU8ekQ&/M74XZ;{"
         
         //Hide error label
         errorLabel.isHidden = true
@@ -60,7 +62,7 @@ class LoginViewController: UIViewController {
         if (usernameInput.text! != "" && passwordInput.text! != "") {
             
             // Get the session via postSession()
-            UdacityClient.sharedInstance().postSession(usernameInput.text!, password: passwordInput.text!) { (didSucceed, error) in
+            ServiceManager.sharedInstance().postSession(usernameInput.text!, password: passwordInput.text!) { (didSucceed, error) in
                 // Display error
                 if let error = error {
                     print(error)
@@ -70,7 +72,7 @@ class LoginViewController: UIViewController {
                     print("Post session did succeed: \(didSucceed)")
                     if didSucceed {
                         print("Success!")
-                        // TODO: Update UI
+                        // Segue to MapViewController
                         performUIUpdatesOnMain {
                             self.completeLogin()
                         }
