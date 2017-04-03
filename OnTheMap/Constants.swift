@@ -38,6 +38,8 @@ extension ServiceManager {
     
     // MARK: Prameter Keys
     struct ParemeterKeys {
+        static let applicaitonId = "X-Parse-Application-Id"
+        static let applicationKey = "X-Parse-REST-API-Key"
         static let Limit = "limit"
         static let Skip = "skip"
         static let Order = "order"

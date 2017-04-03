@@ -68,7 +68,52 @@ class ServiceManager: NSObject {
     
     // MARK: GET
     func taskForGETMethod(url: URL, completionHandlerForGET: @escaping (_ result: AnyObject?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue(ServiceManager.Constants.parseApplicationId, forHTTPHeaderField: ServiceManager.ParemeterKeys.applicaitonId)
+        request.addValue(ServiceManager.Constants.parseApiKey, forHTTPHeaderField: ServiceManager.ParemeterKeys.applicationKey)
         
+        // Make the request
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGET(nil, NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            // GUARD: did we have an error?
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            // GUARD: Did we get a successful 2XX response?
+            guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx! \((response as? HTTPURLResponse)?.statusCode)")
+                return
+            }
+            
+            // GUARD: Was there any data returned?
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            // TODO: remove redundant code
+            // Get rid of those stupid first 5 characters 😖
+//            let range = Range(uncheckedBounds: (5, data.count))
+//            let trimmedData = data.subdata(in: range)
+            
+            // Parse and use data
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
+        }
+
+        //start the request
+        task.resume()
+        return task
     }
     
     // given raw JSON, return a usable object

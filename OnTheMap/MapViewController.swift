@@ -16,6 +16,14 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
         super.viewDidLoad()
         
         // Get 100 pins and display
+        let params = [ServiceManager.ParemeterKeys.Limit: 100, ServiceManager.ParemeterKeys.Skip: 0]
+        ServiceManager.sharedInstance().getStudentLocations(parameters: params as [String : AnyObject]) { (locations, error) in
+            if let error = error {
+                print("We got an error: \(error)")
+            } else {
+                print("Success!!!")
+            }
+        }
         
     }
     

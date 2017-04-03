@@ -127,11 +127,11 @@
 		D97ABD561E748E5C0074EA22 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				D90FB4F41E904A16005485AE /* ParseConvenience.swift */,
 				D97ABD5A1E748EA30074EA22 /* Constants.swift */,
-				D97ABD5C1E7490520074EA22 /* UdacityClient.swift */,
-				D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */,
 				D90FB4F81E91BA25005485AE /* ServiceManager.swift */,
+				D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */,
+				D90FB4F41E904A16005485AE /* ParseConvenience.swift */,
+				D97ABD5C1E7490520074EA22 /* UdacityClient.swift */,
 				D97ABD591E748E7A0074EA22 /* Facebook */,
 			);
 			name = Clients;

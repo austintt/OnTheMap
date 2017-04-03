@@ -10,7 +10,7 @@ import Foundation
 
 extension ServiceManager {
     
-    func getStudentLocations(parameters: [String:AnyObject], completionHandlerForStudentLocations: @escaping (_ locations: [Location]?, _ error: NSError?) -> Void) -> URLSessionDataTask {
+    func getStudentLocations(parameters: [String:AnyObject], completionHandlerForStudentLocations: @escaping (_ locations: [Location]?, _ error: NSError?) -> Void) {
     
         // Set the params, method
         let parametersWithKey = parameters
@@ -18,8 +18,16 @@ extension ServiceManager {
         let url = parseURLFromParameters(parametersWithKey, withPathExtension: method)
         
         // Make the request
-        let _ = taskForGetMethod
-        
+        let _ = taskForGETMethod(url: url) { (results, error) in
+            
+            // Send values to completion handler
+            if let error = error {
+                completionHandlerForStudentLocations(nil, error)
+            } else {
+                print("Locations: \(results)")
+            }
+            
+        }
         
         //Check for errors
         
