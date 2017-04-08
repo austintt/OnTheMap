@@ -30,11 +30,13 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             } else {
                 print("Success!!!")
                 
-                self.addPins(locations: locations!)
-                
+                if let locations = locations {
+                    
+                    // Add pins to the map
+                    self.addPins(locations: locations)
+                }
             }
         }
-        
     }
     
     // Mark: Map functions
@@ -54,27 +56,9 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    // Pins
-//    func addPins(locations: [Location]) {
-//        
-//        for location in locations {
-//            let pin = MKPointAnnotation()
-//            if let lat = location.latitude, let long = location.longitude, let first = location.firstName, let last = location.lastName, let url = location.mediaURL {
-//                // Set annotation data
-//                pin.title = "\(first) \(last)"
-//                pin.subtitle = url
-//                pin.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-//        
-//                
-//                // Add the pin
-//                performUIUpdatesOnMain {
-//                    
-//                    self.map.addAnnotation(pin)
-//                }
-//            }
-//        }
-//    }
+    // MARK: Pins
     
+    // Locations to Pins
     func addPins(locations: [Location]) {
         
         var annotations = [MKPointAnnotation]()
@@ -96,6 +80,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
+    // Setup the annotation view
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let id = "pin"
@@ -107,18 +92,18 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         } else {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: id)
             pinView.canShowCallout = true
+//            pinView.animatesDrop = true
             pinView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
 
         return pinView
     }
     
+    // Open safar view controller when annotation button pressed
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
             if let url = URL(string: (view.annotation?.subtitle!)!) {
-//                app.openURL(NSURL(string: url)! as URL)
                 let safariVC = SFSafariViewController(url: url)
                 present(safariVC, animated: true, completion: nil)
             }
