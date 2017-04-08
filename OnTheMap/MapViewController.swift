@@ -21,6 +21,8 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         super.viewDidLoad()
         
         mapView.delegate = self
+        self.navigationItem.rightBarButtonItems?[0].isEnabled = false
+        self.navigationItem.rightBarButtonItems?[1].isEnabled = false
         
         // Get 100 pins and display
         let params = [ServiceManager.ParemeterKeys.Limit: 100, ServiceManager.ParemeterKeys.Skip: 0]
@@ -34,6 +36,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
                     
                     // Add pins to the map
                     self.addPins(locations: locations)
+                    self.toggleNavButtonsActive()
                 }
             }
         }
@@ -115,6 +118,13 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     // Mark: Tab bar
     // List view
+    
+    
+    func toggleNavButtonsActive() {
+        for button in self.navigationItem.rightBarButtonItems! {
+            button.isEnabled = !button.isEnabled
+        }
+    }
     
     
 }

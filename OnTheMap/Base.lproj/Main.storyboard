@@ -121,8 +121,8 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="refresh" id="U03-Xr-Rw2"/>
-                            <barButtonItem image="Pin" id="xZW-RD-al2">
+                            <barButtonItem enabled="NO" systemItem="refresh" id="U03-Xr-Rw2"/>
+                            <barButtonItem enabled="NO" image="Pin" id="xZW-RD-al2">
                                 <connections>
                                     <segue destination="g48-Ky-ZWq" kind="presentation" id="fqA-jy-DSA"/>
                                 </connections>
@@ -149,6 +149,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QhM-7R-dAO">
+                                <rect key="frame" x="0.0" y="188" width="375" height="479"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rcb-yv-AJL">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                                 <subviews>
@@ -225,7 +229,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -248,6 +252,7 @@
                     <connections>
                         <outlet property="findOnMapButtonView" destination="waL-KB-iHe" id="1Yx-sf-sMG"/>
                         <outlet property="locationField" destination="ZlF-OL-j7a" id="8EF-cu-SbM"/>
+                        <outlet property="mapView" destination="QhM-7R-dAO" id="eTx-vq-OY1"/>
                         <outlet property="questionView" destination="rcb-yv-AJL" id="PeM-5s-6bc"/>
                     </connections>
                 </viewController>
