@@ -12,18 +12,18 @@ import MapKit
 
 class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var questionView: UIView!
-    @IBOutlet weak var findOnMapButtonView: UIView!
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var urlLabel: UITextField!
+    @IBOutlet weak var locationQuestionView: UIView!
+    @IBOutlet weak var urlQuesitonView: UIView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mapView.isHidden = true
-        
         locationField.delegate = self
-        
-        
+        locationQuestionView.isHidden = false
+        urlQuesitonView.isHidden = true
     }
     
     // Cancel and go back to map view
@@ -70,8 +70,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     }
     
     func prepareForNextQuestion() {
-        findOnMapButtonView.isHidden = true
-        mapView.isHidden = false
+        locationQuestionView.isHidden = true
+        urlQuesitonView.isHidden = false
     }
     
     // MARK: Misc
