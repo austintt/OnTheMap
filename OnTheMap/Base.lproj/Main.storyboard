@@ -125,6 +125,9 @@
                             <barButtonItem title="Item" id="xZW-RD-al2"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="map" destination="Fse-TC-KTK" id="yvc-ev-VEo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qva-n4-OG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -133,7 +136,6 @@
         <!--Navigation Controller-->
         <scene sceneID="ABo-WK-Svm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wru-Ql-9cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MapNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="tl9-Hc-p1t" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="879-aI-N5n">
@@ -145,6 +147,7 @@
                         <segue destination="xw3-Ho-mF6" kind="relationship" relationship="rootViewController" id="W9I-YU-1KY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wru-Ql-9cv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.60000000000002" y="144.3778110944528"/>
         </scene>

@@ -9,9 +9,13 @@
 import Foundation
 
 import UIKit
+import MapKit
+
 
 class MapViewController: UIViewController, UINavigationControllerDelegate {
 
+    @IBOutlet weak var map: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +26,9 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
                 print("We got an error: \(error)")
             } else {
                 print("Success!!!")
+                
+//                addPins(locations)
+                
             }
         }
         
@@ -45,6 +52,14 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     // Pins
+    func addPins(locations: [Location]) {
+        
+        for location in locations {
+            let pin = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2D(latitude: location.latitude!, longitude: location.longitude!)
+            map.addAnnotation(pin)
+        }
+    }
     
     // Refresh
     

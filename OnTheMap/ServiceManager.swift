@@ -103,10 +103,6 @@ class ServiceManager: NSObject {
             }
             
             // TODO: remove redundant code
-            // Get rid of those stupid first 5 characters 😖
-//            let range = Range(uncheckedBounds: (5, data.count))
-//            let trimmedData = data.subdata(in: range)
-            
             // Parse and use data
             self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
         }

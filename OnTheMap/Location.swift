@@ -12,8 +12,8 @@ struct Location {
     var createdAt: String?
     var firstName: String?
     var lastName: String?
-    var latitude: String?
-    var longitude: String?
+    var latitude: Double?
+    var longitude: Double?
     var mapString: String?
     var mediaURL: String?
     var objectId: String?

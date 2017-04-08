@@ -25,6 +25,7 @@ extension ServiceManager {
                 completionHandlerForStudentLocations(nil, error)
             } else {
                 print("Locations: \(results)")
+                //Convert to Location objects
             }
             
         }
