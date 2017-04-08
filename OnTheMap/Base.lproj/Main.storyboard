@@ -126,7 +126,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="map" destination="Fse-TC-KTK" id="yvc-ev-VEo"/>
+                        <outlet property="mapView" destination="Fse-TC-KTK" id="Bvo-l4-O7r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qva-n4-OG9" userLabel="First Responder" sceneMemberID="firstResponder"/>
