@@ -10,6 +10,7 @@ import Foundation
 
 import UIKit
 import MapKit
+import SafariServices
 
 
 class MapViewController: UIViewController, UINavigationControllerDelegate, MKMapViewDelegate {
@@ -116,8 +117,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
-            if let url = view.annotation?.subtitle! {
-                app.openURL(NSURL(string: url)! as URL)
+            if let url = URL(string: (view.annotation?.subtitle!)!) {
+//                app.openURL(NSURL(string: url)! as URL)
+                let safariVC = SFSafariViewController(url: url)
+                present(safariVC, animated: true, completion: nil)
             }
         }
     }
