@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AddLocationViewController: UIViewController {
+class AddLocationViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var findOnMapButtonView: UIView!
@@ -18,6 +18,8 @@ class AddLocationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationField.delegate = self
         
         
     }
@@ -30,5 +32,11 @@ class AddLocationViewController: UIViewController {
     @IBAction func findOnMap(_ sender: Any) {
         
         
+    }
+    
+    // MARK: Misc
+    func textFieldShouldReturn(_ scoreText: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
     }
 }
