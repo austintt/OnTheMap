@@ -273,6 +273,7 @@
                                         <state key="normal" title="Submit"/>
                                         <connections>
                                             <action selector="findOnMap:" destination="g48-Ky-ZWq" eventType="touchUpInside" id="41w-EO-itt"/>
+                                            <action selector="submit:" destination="g48-Ky-ZWq" eventType="touchUpInside" id="niB-7V-1yh"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -316,7 +317,7 @@
                         <outlet property="locationField" destination="ZlF-OL-j7a" id="8EF-cu-SbM"/>
                         <outlet property="locationQuestionView" destination="cQ6-ZG-CoK" id="HGP-vh-7je"/>
                         <outlet property="mapView" destination="QhM-7R-dAO" id="eTx-vq-OY1"/>
-                        <outlet property="urlLabel" destination="ADT-PO-qki" id="E63-3e-dDV"/>
+                        <outlet property="urlField" destination="ADT-PO-qki" id="RnK-ne-awy"/>
                         <outlet property="urlQuesitonView" destination="gT7-Ov-qag" id="rTg-eg-bcp"/>
                     </connections>
                 </viewController>

@@ -17,6 +17,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var urlLabel: UITextField!
     @IBOutlet weak var locationQuestionView: UIView!
     @IBOutlet weak var urlQuesitonView: UIView!
+    @IBOutlet weak var urlField: UITextField!
     
     
     override func viewDidLoad() {
@@ -66,6 +67,12 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
             })
         } else {
             print("No location!")
+        }
+    }
+    
+    @IBAction func submit(_ sender: Any) {
+        if let address = urlField.text {
+            
         }
     }
     
