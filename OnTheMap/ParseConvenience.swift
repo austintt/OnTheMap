@@ -24,10 +24,13 @@ extension ServiceManager {
             if let error = error {
                 completionHandlerForStudentLocations(nil, error)
             } else {
-                print("Locations: \(results)")
+//                print("Locations: \(results)")
                 //Convert to Location objects
+                let locations = self.parseLocationFromJson(results: results as! [String : AnyObject])
+                
+                // Return successfully
+                completionHandlerForStudentLocations(locations, nil)
             }
-            
         }
         
         //Check for errors
@@ -35,6 +38,17 @@ extension ServiceManager {
         //Parse and use data
         
         //start the request
+    }
+    
+    private func parseLocationFromJson(results: [String: AnyObject]) -> [Location] {
+        var locations = [Location]()
+        print(results)
+        if let parsedResult = results[ServiceManager.JSONResponseKeys.Results] as? [[String:AnyObject]] {
+            locations = Location.locationsFromResults(parsedResult)
+            print(locations[0])
+        }
+        
+        return locations
     }
     
     // Create URL from params

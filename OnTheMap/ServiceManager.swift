@@ -123,8 +123,6 @@ class ServiceManager: NSObject {
             completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
         
-        print("Parsed Result: \(parsedResult)")
-        
         completionHandlerForConvertData(parsedResult, nil)
     }
     

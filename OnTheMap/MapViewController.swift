@@ -27,7 +27,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
             } else {
                 print("Success!!!")
                 
-//                addPins(locations)
+                self.addPins(locations: locations!)
                 
             }
         }
@@ -56,8 +56,12 @@ class MapViewController: UIViewController, UINavigationControllerDelegate {
         
         for location in locations {
             let pin = MKPointAnnotation()
-            pin.coordinate = CLLocationCoordinate2D(latitude: location.latitude!, longitude: location.longitude!)
-            map.addAnnotation(pin)
+            if let lat = location.latitude, let long = location.longitude {
+                pin.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                performUIUpdatesOnMain {
+                    self.map.addAnnotation(pin)
+                }
+            }
         }
     }
     

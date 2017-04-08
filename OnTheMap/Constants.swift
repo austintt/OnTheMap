@@ -70,6 +70,19 @@ extension ServiceManager {
         static let Session = "session"
         static let Id = "id"
         static let Expiration = "expiration"
+        
+        // MARK: MAP
+        static let Results = "results"
+        static let CreatedAt = "createdAt"
+        static let FirstName = "firstName"
+        static let LastName = "lastName"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        static let malformedLongitude = "longtiude"
+        static let MediaUrl = "mediaURL"
+        static let ObjectId = "objectId"
+        static let UniqueKey = "uniqueKey"
+        static let UpdatedAt = "updatedAt"
     
     }
     
