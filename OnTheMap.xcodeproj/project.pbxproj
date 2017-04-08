@@ -20,6 +20,7 @@
 		D97ABD5B1E748EA30074EA22 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5A1E748EA30074EA22 /* Constants.swift */; };
 		D97ABD5D1E7490520074EA22 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5C1E7490520074EA22 /* UdacityClient.swift */; };
 		D97ABD5F1E74A5930074EA22 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */; };
+		D9C5D4251E99694A008584D9 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5D4241E99694A008584D9 /* AddLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		D97ABD5A1E748EA30074EA22 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D97ABD5C1E7490520074EA22 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
+		D9C5D4241E99694A008584D9 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			children = (
 				D97ABD3F1E748C5E0074EA22 /* LoginViewController.swift */,
 				D929749E1E8F5B5300C7B3D1 /* MapViewController.swift */,
+				D9C5D4241E99694A008584D9 /* AddLocationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				D90FB4FB1E91C18C005485AE /* Location.swift in Sources */,
 				D97ABD401E748C5E0074EA22 /* LoginViewController.swift in Sources */,
 				D97ABD501E748DB30074EA22 /* GCDBlackBox.swift in Sources */,
+				D9C5D4251E99694A008584D9 /* AddLocationViewController.swift in Sources */,
 				D97ABD5B1E748EA30074EA22 /* Constants.swift in Sources */,
 				D97ABD3E1E748C5E0074EA22 /* AppDelegate.swift in Sources */,
 				D97ABD5F1E74A5930074EA22 /* UdacityConvenience.swift in Sources */,

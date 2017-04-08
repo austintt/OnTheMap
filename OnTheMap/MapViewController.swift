@@ -39,8 +39,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    // Mark: Map functions
-    
     // Mark: Navigation bar
     // Logout
     @IBAction func logout(_ sender: Any) {
@@ -56,8 +54,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    // MARK: Pins
-    
+    // MARK: Map Functions
     // Locations to Pins
     func addPins(locations: [Location]) {
         
@@ -109,9 +106,12 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             }
         }
     }
-
+    
+    // Add Pin
+    
     
     // Refresh
+    
     
     // Mark: Tab bar
     // List view
