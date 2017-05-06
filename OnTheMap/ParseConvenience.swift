@@ -40,6 +40,29 @@ extension ServiceManager {
         //start the request
     }
     
+    
+    func postStudentLocation(_ location: Location, completionHandlerForPostLocation: @escaping (_ didSucceed: Bool, _ error: NSError?) -> Void) {
+        
+        // Specify params, method, and http body
+        let parametors = [String:AnyObject]()
+        let method: String = Methods.StudentLocation
+        let url = parseURLFromParameters(parametors, withPathExtension: method)
+        let jsonBody = "{\"\(ServiceManager.ParemeterKeys.UniqueKey)\": {\"\(ServiceManager.Constants.parseApiKey)\", \"\(ServiceManager.JSONResponseKeys.FirstName)\":\"\(location.firstName)\", \"\(ServiceManager.JSONResponseKeys.LastName)\":\"\(location.lastName)\", \"\(ServiceManager.JSONResponseKeys.MapString)\":\"\(location.mapString)\", \"\(ServiceManager.JSONResponseKeys.MediaUrl)\":\"\(location.mediaURL)\", \"\(ServiceManager.JSONResponseKeys.Latitude)\":\"\(location.latitude)\", \"\(ServiceManager.JSONResponseKeys.Longitude)\":\"\(location.longitude)\"}}"
+        print("Body: \(jsonBody)" )
+        
+        // Make request
+        
+        // Send values to completion handler
+        
+            // Handle error
+        
+            // Set set locaiton
+        
+            //else error
+        
+            // success
+    }
+    
     private func parseLocationFromJson(results: [String: AnyObject]) -> [Location] {
         var locations = [Location]()
         print(results)

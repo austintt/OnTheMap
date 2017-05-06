@@ -14,11 +14,15 @@ struct Location {
     var lastName: String?
     var latitude: Double?
     var longitude: Double?
-//    var mapString: String?
+    var mapString: String?
     var mediaURL: String?
     var objectId: String?
     var uniqueKey: String?
     var updatedAt: String?
+    
+    init() {
+        
+    }
     
     init (dictionary: [String: AnyObject]) {
         createdAt = dictionary[ServiceManager.JSONResponseKeys.CreatedAt] as? String
@@ -29,7 +33,8 @@ struct Location {
         uniqueKey = dictionary[ServiceManager.JSONResponseKeys.UniqueKey] as? String
         updatedAt = dictionary[ServiceManager.JSONResponseKeys.UpdatedAt] as? String
         latitude = dictionary[ServiceManager.JSONResponseKeys.Latitude] as? Double
-//        longitude = dictionary[ServiceManager.JSONResponseKeys.Longitude] as? String
+        longitude = dictionary[ServiceManager.JSONResponseKeys.Longitude] as? Double
+        mapString = dictionary[ServiceManager.JSONResponseKeys.MapString] as? String
         if let longString = dictionary[ServiceManager.JSONResponseKeys.Longitude] as? Double {
             longitude = longString
         } else if let longString = dictionary[ServiceManager.JSONResponseKeys.malformedLongitude] as? Double {

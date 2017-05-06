@@ -49,6 +49,45 @@ extension ServiceManager {
         }
     }
     
+    func getStudentInfo(parameters: [String:AnyObject], completionHandlerForStudentInfo: @escaping (_ user: User?, _ error: NSError?) -> Void) {
+        // Set params
+        let blankParams = [String:AnyObject]()
+        var method: String = Methods.StudentInfo
+        method += parameters[ServiceManager.JSONResponseKeys.Account] as! String
+        var url = udacityURLFromParameters(blankParams, withPathExtension: method)
+        print("URL: \(url)")
+        
+        
+        // Make Request
+        let _ = taskForGETMethod(url: url) { (results, error) in
+            
+            // check for error
+            if let error = error {
+                completionHandlerForStudentInfo(nil, error)
+            } else {
+                print("USER RESULTS: \(results)")
+                
+                //let user = self.parseUserFromJson(results: results as! [String:AnyObject])
+                print("Student Info: \(String(describing: results))")
+                
+                completionHandlerForStudentInfo(nil, nil)
+            }
+            
+        }
+        
+            // Send values to completion handler
+    }
+    
+    func parseUserFromJson(results: [String:AnyObject]) -> User {
+        var user = User()
+        print("User Results: \(results)")
+        
+//        if let parsedResult = results
+        
+        return user
+    }
+    
+    
     // Create URL from params
     private func udacityURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
         

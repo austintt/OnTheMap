@@ -34,6 +34,7 @@ extension ServiceManager {
         // MARK Session
         static let Session = "/session"
         static let StudentLocation = "/StudentLocation"
+        static let StudentInfo = "/users/"
     }
     
     // MARK: Prameter Keys
@@ -83,6 +84,7 @@ extension ServiceManager {
         static let ObjectId = "objectId"
         static let UniqueKey = "uniqueKey"
         static let UpdatedAt = "updatedAt"
+        static let MapString = "mapString"
     
     }
     

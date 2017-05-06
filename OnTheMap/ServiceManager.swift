@@ -52,12 +52,12 @@ class ServiceManager: NSObject {
                 return
             }
             
-            // Get rid of those stupid first 5 characters 😖
-            let range = Range(uncheckedBounds: (5, data.count))
-            let trimmedData = data.subdata(in: range)
+            // Get rid of those annoying first 5 characters 😖
+//            let range = Range(uncheckedBounds: (5, data.count))
+//            let trimmedData = data.subdata(in: range)
             
             // Parse and use data
-            self.convertDataWithCompletionHandler(trimmedData, completionHandlerForConvertData: completionHandlerForPost)
+            self.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPost)
             
         }
         
@@ -75,13 +75,17 @@ class ServiceManager: NSObject {
         request.addValue(ServiceManager.Constants.parseApplicationId, forHTTPHeaderField: ServiceManager.ParemeterKeys.applicaitonId)
         request.addValue(ServiceManager.Constants.parseApiKey, forHTTPHeaderField: ServiceManager.ParemeterKeys.applicationKey)
         
+        print("GETTING")
+        print("URL: \(url)")
+        print("REQUEST: \(request)")
+        
         // Make the request
         let task = session.dataTask(with: request) { (data, response, error) in
             
             func sendError(_ error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForGET(nil, NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+                completionHandlerForGET(nil, NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
             }
             
             // GUARD: did we have an error?
@@ -114,16 +118,25 @@ class ServiceManager: NSObject {
     
     // given raw JSON, return a usable object
     private func convertDataWithCompletionHandler(_ data: Data, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
-        print(data)
-        var parsedResult: AnyObject! = nil
-        do {
-            parsedResult = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as AnyObject
-        } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-        }
+        print("PARSING data: \(data)")
         
-        completionHandlerForConvertData(parsedResult, nil)
+        // Get rid of those annoying first 5 characters 😖
+        let convertedData = (NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)
+        var preParsedResult = String(convertedData)
+        preParsedResult = preParsedResult.replacingOccurrences(of: ")]}'", with: "")
+        
+        // Convert to dictionary
+        if let sanitizedData = preParsedResult.data(using: .utf8) {
+            var parsedResult: AnyObject! = nil
+            do {
+                parsedResult = try JSONSerialization.jsonObject(with: sanitizedData, options: .allowFragments) as AnyObject
+            } catch {
+                let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(sanitizedData)'"]
+                completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+            }
+            print("PARSED DATA: \(parsedResult))")
+            completionHandlerForConvertData(parsedResult, nil)
+        }
     }
     
     // Shared instance

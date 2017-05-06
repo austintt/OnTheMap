@@ -18,6 +18,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var locationQuestionView: UIView!
     @IBOutlet weak var urlQuesitonView: UIView!
     @IBOutlet weak var urlField: UITextField!
+    var newLocation: Location!
     
     
     override func viewDidLoad() {
@@ -25,6 +26,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
         locationField.delegate = self
         locationQuestionView.isHidden = false
         urlQuesitonView.isHidden = true
+        newLocation = Location()
     }
     
     // Cancel and go back to map view
@@ -50,6 +52,8 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
                 let point = MKPointAnnotation()
                 point.coordinate = CLLocationCoordinate2D(latitude: response!.boundingRegion.center.latitude, longitude: response!.boundingRegion.center.longitude)
                 let pinView = MKPinAnnotationView(annotation: point, reuseIdentifier: "pin")
+                self.newLocation.latitude = response!.boundingRegion.center.latitude
+                self.newLocation.longitude = response!.boundingRegion.center.longitude
                 pinView.animatesDrop = true
                 
                 // Display on map
@@ -73,6 +77,14 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     @IBAction func submit(_ sender: Any) {
         if let address = urlField.text {
             
+            // Finish setting up new locaiton
+            self.newLocation.mediaURL = urlField.text
+            // TODO: grab user's name
+            self.newLocation.firstName = "TEST"
+            self.newLocation.lastName = "USER"
+            
+            // post locaiton
+//            postStudentLocation(newLocation)
         }
     }
     

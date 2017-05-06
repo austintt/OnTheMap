@@ -72,6 +72,10 @@ class LoginViewController: UIViewController {
                     print("Post session did succeed: \(didSucceed)")
                     if didSucceed {
                         print("Success!")
+                        
+                        // Set current user
+                        self.setCurrentUser()
+                        
                         // Segue to MapViewController
                         performUIUpdatesOnMain {
                             self.completeLogin()
@@ -87,6 +91,15 @@ class LoginViewController: UIViewController {
         } else {
             self.setErrorMessage(message: "Enter email and password to login")
         }
+    }
+    
+    private func setCurrentUser() {
+        print("USER \(ServiceManager.User.accountKey)")
+        let userParams = [ServiceManager.JSONResponseKeys.Account: ServiceManager.User.accountKey]
+        ServiceManager.sharedInstance().getStudentInfo(parameters: userParams as [String : AnyObject]) { (user, error) in
+            
+        }
+        
     }
 }
 
