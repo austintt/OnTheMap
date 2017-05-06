@@ -93,10 +93,19 @@ class LoginViewController: UIViewController {
         }
     }
     
-    private func setCurrentUser() {
+    private func setCurrentUser(){
         print("USER \(ServiceManager.User.accountKey)")
         let userParams = [ServiceManager.JSONResponseKeys.Account: ServiceManager.User.accountKey]
-        ServiceManager.sharedInstance().getStudentInfo(parameters: userParams as [String : AnyObject]) { (user, error) in
+        ServiceManager.sharedInstance().getStudentInfo(parameters: userParams as [String : AnyObject]) { (error) in
+            
+            // Check for error
+            if let error = error {
+                print(error)
+                self.spinner.stopAnimating()
+                self.setErrorMessage(message: "Error logging in")
+            } else {
+               
+            }
             
         }
         

@@ -134,7 +134,7 @@ class ServiceManager: NSObject {
                 let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(sanitizedData)'"]
                 completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
             }
-            print("PARSED DATA: \(parsedResult))")
+//            print("PARSED DATA: \(parsedResult))")
             completionHandlerForConvertData(parsedResult, nil)
         }
     }

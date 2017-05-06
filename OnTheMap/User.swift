@@ -13,9 +13,5 @@ struct User {
     static var lastName  = ""
     static var sessionId = ""
     static var userId = ""
-    
-    init() {
-        
-    }
-    
+
 }

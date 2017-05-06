@@ -47,7 +47,7 @@ extension ServiceManager {
         let parametors = [String:AnyObject]()
         let method: String = Methods.StudentLocation
         let url = parseURLFromParameters(parametors, withPathExtension: method)
-        let jsonBody = "{\"\(ServiceManager.ParemeterKeys.UniqueKey)\": {\"\(ServiceManager.Constants.parseApiKey)\", \"\(ServiceManager.JSONResponseKeys.FirstName)\":\"\(location.firstName)\", \"\(ServiceManager.JSONResponseKeys.LastName)\":\"\(location.lastName)\", \"\(ServiceManager.JSONResponseKeys.MapString)\":\"\(location.mapString)\", \"\(ServiceManager.JSONResponseKeys.MediaUrl)\":\"\(location.mediaURL)\", \"\(ServiceManager.JSONResponseKeys.Latitude)\":\"\(location.latitude)\", \"\(ServiceManager.JSONResponseKeys.Longitude)\":\"\(location.longitude)\"}}"
+        let jsonBody = "{\"\(ServiceManager.ParemeterKeys.UniqueKey)\": {\"\(ServiceManager.User.accountKey)\", \"\(ServiceManager.JSONResponseKeys.FirstName)\":\"\(ServiceManager.User.firstName)\", \"\(ServiceManager.JSONResponseKeys.LastName)\":\"\(ServiceManager.User.lastName)\", \"\(ServiceManager.JSONResponseKeys.MapString)\":\"\(location.mapString)\", \"\(ServiceManager.JSONResponseKeys.MediaUrl)\":\"\(location.mediaURL)\", \"\(ServiceManager.JSONResponseKeys.Latitude)\":\"\(location.latitude)\", \"\(ServiceManager.JSONResponseKeys.Longitude)\":\"\(location.longitude)\"}}"
         print("Body: \(jsonBody)" )
         
         // Make request

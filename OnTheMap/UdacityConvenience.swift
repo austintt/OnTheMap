@@ -49,7 +49,7 @@ extension ServiceManager {
         }
     }
     
-    func getStudentInfo(parameters: [String:AnyObject], completionHandlerForStudentInfo: @escaping (_ user: User?, _ error: NSError?) -> Void) {
+    func getStudentInfo(parameters: [String:AnyObject], completionHandlerForStudentInfo: @escaping (_ error: NSError?) -> Void) {
         // Set params
         let blankParams = [String:AnyObject]()
         var method: String = Methods.StudentInfo
@@ -63,28 +63,26 @@ extension ServiceManager {
             
             // check for error
             if let error = error {
-                completionHandlerForStudentInfo(nil, error)
+                completionHandlerForStudentInfo(error)
             } else {
                 print("USER RESULTS: \(results)")
                 
-                //let user = self.parseUserFromJson(results: results as! [String:AnyObject])
+                self.parseUserFromJson(results: results as! [String:AnyObject])
                 print("Student Info: \(String(describing: results))")
                 
-                completionHandlerForStudentInfo(nil, nil)
+                completionHandlerForStudentInfo(nil)
             }
-            
         }
-        
-            // Send values to completion handler
     }
     
-    func parseUserFromJson(results: [String:AnyObject]) -> User {
-        var user = User()
-        print("User Results: \(results)")
+    func parseUserFromJson(results: [String:AnyObject]) {
         
-//        if let parsedResult = results
+        if let user = results["user"] as? [String:AnyObject] {
+            ServiceManager.User.firstName = user["first_name"] as! String
+            ServiceManager.User.lastName = user["last_name"] as! String
+        }
         
-        return user
+        return
     }
     
     
