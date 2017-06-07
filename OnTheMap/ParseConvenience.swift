@@ -47,20 +47,23 @@ extension ServiceManager {
         let parametors = [String:AnyObject]()
         let method: String = Methods.StudentLocation
         let url = parseURLFromParameters(parametors, withPathExtension: method)
-        let jsonBody = "{\"\(ServiceManager.ParemeterKeys.UniqueKey)\": {\"\(ServiceManager.User.accountKey)\", \"\(ServiceManager.JSONResponseKeys.FirstName)\":\"\(ServiceManager.User.firstName)\", \"\(ServiceManager.JSONResponseKeys.LastName)\":\"\(ServiceManager.User.lastName)\", \"\(ServiceManager.JSONResponseKeys.MapString)\":\"\(location.mapString)\", \"\(ServiceManager.JSONResponseKeys.MediaUrl)\":\"\(location.mediaURL)\", \"\(ServiceManager.JSONResponseKeys.Latitude)\":\"\(location.latitude)\", \"\(ServiceManager.JSONResponseKeys.Longitude)\":\"\(location.longitude)\"}}"
+        let jsonBody = "{\"\(ServiceManager.ParemeterKeys.UniqueKey)\": \"\(ServiceManager.User.accountKey)\", \"\(ServiceManager.JSONResponseKeys.FirstName)\":\"\(ServiceManager.User.firstName)\", \"\(ServiceManager.JSONResponseKeys.LastName)\":\"\(ServiceManager.User.lastName)\", \"\(ServiceManager.JSONResponseKeys.MapString)\":\"\(location.mapString)\", \"\(ServiceManager.JSONResponseKeys.MediaUrl)\":\"\(location.mediaURL!)\", \"\(ServiceManager.JSONResponseKeys.Latitude)\":\"\(location.latitude!)\", \"\(ServiceManager.JSONResponseKeys.Longitude)\":\"\(location.longitude!)\"}"
         print("Body: \(jsonBody)" )
         
         // Make request
-        
-        // Send values to completion handler
-        
+        let _ = taskForPostMethod(url: url, jsonBody: jsonBody) { (results, error) in
+           
+            print(results)
+            // Send values to completion handler
             // Handle error
+            if let error = error {
+                completionHandlerForPostLocation(false, error)
+            } else {
+                // Set set locaiton
+                completionHandlerForPostLocation(true, nil)
+            }
+        }
         
-            // Set set locaiton
-        
-            //else error
-        
-            // success
     }
     
     private func parseLocationFromJson(results: [String: AnyObject]) -> [Location] {

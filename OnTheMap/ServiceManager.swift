@@ -23,6 +23,8 @@ class ServiceManager: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = jsonBody.data(using: String.Encoding.utf8)
+        request.addValue(ServiceManager.Constants.parseApplicationId, forHTTPHeaderField: ServiceManager.ParemeterKeys.applicaitonId)
+        request.addValue(ServiceManager.Constants.parseApiKey, forHTTPHeaderField: ServiceManager.ParemeterKeys.applicationKey)
         print("Request: \(request)")
         
         // Make request
@@ -42,7 +44,7 @@ class ServiceManager: NSObject {
             
             // GUARD, did we get a successful 2XX response?
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Bad response status code!")
+                sendError("Bad response status code! \((response as? HTTPURLResponse)?.statusCode)")
                 return
             }
             

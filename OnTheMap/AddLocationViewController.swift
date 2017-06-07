@@ -84,7 +84,14 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
             self.newLocation.lastName = "USER"
             
             // post locaiton
-//            postStudentLocation(newLocation)
+            ServiceManager.sharedInstance().postStudentLocation(newLocation) { (didSucceed, error) in
+                
+                if let error = error {
+                    print("Error posting new location \(error)")
+                } else {
+                    print("Success posting")
+                }
+            }
         }
     }
     
