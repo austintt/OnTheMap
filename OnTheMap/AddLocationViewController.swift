@@ -90,6 +90,9 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
                     print("Error posting new location \(error)")
                 } else {
                     print("Success posting")
+                    
+                    // Return
+                    self.dismiss(animated: true, completion: nil)
                 }
             }
         }

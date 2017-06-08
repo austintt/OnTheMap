@@ -24,6 +24,32 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         self.navigationItem.rightBarButtonItems?[0].isEnabled = false
         self.navigationItem.rightBarButtonItems?[1].isEnabled = false
         
+        getLocations()
+    }
+    
+    // Mark: Navigation bar
+    // Logout
+    @IBAction func logout(_ sender: Any) {
+        print("Logging out")
+        
+        // Wipe session
+        ServiceManager.User.sessionID = ""
+        ServiceManager.User.accountKey = ""
+        
+        // Return to login
+        performUIUpdatesOnMain {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    
+    @IBAction func refreshMap(_ sender: Any) {
+        getLocations()
+    }
+    
+    // MARK: Map Functions
+    
+    func getLocations() {
         // Get 100 pins and display
         let params = [ServiceManager.ParemeterKeys.Limit: 100, ServiceManager.ParemeterKeys.Skip: 0]
         ServiceManager.sharedInstance().getStudentLocations(parameters: params as [String : AnyObject]) { (locations, error) in
@@ -42,22 +68,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    // Mark: Navigation bar
-    // Logout
-    @IBAction func logout(_ sender: Any) {
-        print("Logging out")
-        
-        // Wipe session
-        ServiceManager.User.sessionID = ""
-        ServiceManager.User.accountKey = ""
-        
-        // Return to login
-        performUIUpdatesOnMain {
-            self.dismiss(animated: true, completion: nil)
-        }
-    }
     
-    // MARK: Map Functions
     // Locations to Pins
     func addPins(locations: [Location]) {
         
