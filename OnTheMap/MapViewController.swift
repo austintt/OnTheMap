@@ -23,7 +23,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         mapView.delegate = self
         self.navigationItem.rightBarButtonItems?[0].isEnabled = false
         self.navigationItem.rightBarButtonItems?[1].isEnabled = false
-        
+        self.toggleNavButtonsActive()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         getLocations()
     }
     
@@ -62,7 +65,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
                     
                     // Add pins to the map
                     self.addPins(locations: locations)
-                    self.toggleNavButtonsActive()
+//                    self.toggleNavButtonsActive()
                 }
             }
         }
@@ -114,9 +117,17 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == view.rightCalloutAccessoryView {
-            if let url = URL(string: (view.annotation?.subtitle!)!) {
-                let safariVC = SFSafariViewController(url: url)
-                present(safariVC, animated: true, completion: nil)
+            if let urlString = view.annotation?.subtitle {
+                // Handel missing http
+                var formattedURL = urlString
+                if (!(urlString?.contains("http"))!) {
+                    formattedURL = "http://\(urlString!)"
+                }
+    
+                if let url = URL(string: (formattedURL)!) {
+                    let safariVC = SFSafariViewController(url: url)
+                    present(safariVC, animated: true, completion: nil)
+                }
             }
         }
     }

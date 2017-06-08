@@ -92,7 +92,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
                     print("Success posting")
                     
                     // Return
-                    self.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: {print("COMPLETION")})
                 }
             }
         }
