@@ -45,7 +45,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    
+    // Refresh
     @IBAction func refreshMap(_ sender: Any) {
         getLocations()
     }
@@ -131,12 +131,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             }
         }
     }
-    
-    // Add Pin
-    
-    
-    // Refresh
-    
     
     // Mark: Tab bar
     // List view
