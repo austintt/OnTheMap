@@ -13,7 +13,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     override func viewDidLoad() {
@@ -22,20 +21,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Text fields
         usernameInput.delegate = self
         passwordInput.delegate = self
-        
-        //Hide error label
-        errorLabel.isHidden = true
     }
     
     private func setErrorMessage(message: String) {
-        errorLabel.text = message
-        errorLabel.isHidden = false
-        spinner.isHidden = true
+        
+        
+        // Make alert
+        performUIUpdatesOnMain(){
+            let alertController = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+            }
+            alertController.addAction(okAction)
+            
+            // Present alert
+            self.spinner.stopAnimating()
+            self.spinner.isHidden = true
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        
     }
     
     private func completeLogin() {
         // Clear inputs/labels
-        errorLabel.isHidden = true
         usernameInput.text = ""
         passwordInput.text = ""
         spinner.stopAnimating()
@@ -55,8 +64,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     // Authenticate the user
     @IBAction func login(_ sender: Any) {
-        //Hide error label
-        errorLabel.isHidden = true
         spinner.startAnimating()
         
         // Grab the username and password
@@ -67,7 +74,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 // Display error
                 if let error = error {
                     print(error)
-                    self.spinner.stopAnimating()
                     self.setErrorMessage(message: "Error logging in")
                 } else {
                     print("Post session did succeed: \(didSucceed)")
@@ -82,7 +88,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                             self.completeLogin()
                         }
                     } else {
-                        self.spinner.stopAnimating()
                         // Display error
                         print("Post session did not succeed")
                         self.setErrorMessage(message: "Error logging in")
@@ -102,7 +107,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Check for error
             if let error = error {
                 print(error)
-                self.spinner.stopAnimating()
                 self.setErrorMessage(message: "Error logging in")
             } else {
                
