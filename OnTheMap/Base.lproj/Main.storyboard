@@ -37,7 +37,9 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIf-3y-EOY">
                                 <rect key="frame" x="160" y="607" width="55" height="30"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tPq-Xc-7NX"/>
                                 </connections>
@@ -47,37 +49,54 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="P4S-Pi-oln"/>
                                 </constraints>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.20392156862745098" green="0.59607843137254901" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0kj-t5-yBD"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-sU-mWn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBA-sU-mWn">
                                 <rect key="frame" x="16" y="424" width="343" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="XeA-A0-xby"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.90588235294117647" green="0.29803921568627451" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3y6-eC-z1c">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="3y6-eC-z1c">
                                 <rect key="frame" x="177" y="369" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.92549019607843142" green="0.94117647058823528" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UdacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="FCD-wK-Hhz">
+                                <rect key="frame" x="114" y="108" width="147" height="96"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.17254901960784313" green="0.24313725490196078" blue="0.31372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="FCD-wK-Hhz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="88" id="0Hd-4G-frs"/>
                             <constraint firstItem="rDX-3P-4ns" firstAttribute="centerX" secondItem="FIf-3y-EOY" secondAttribute="centerX" id="4lJ-5a-QIn"/>
                             <constraint firstItem="lsW-Vw-oou" firstAttribute="top" secondItem="96v-6O-7jf" secondAttribute="bottom" constant="30" id="D2W-My-VeV"/>
                             <constraint firstItem="96v-6O-7jf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H6s-v8-ndO"/>
+                            <constraint firstItem="uBA-sU-mWn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="KTf-de-484"/>
                             <constraint firstItem="lsW-Vw-oou" firstAttribute="centerX" secondItem="rDX-3P-4ns" secondAttribute="centerX" id="L8W-MT-V48"/>
+                            <constraint firstItem="3y6-eC-z1c" firstAttribute="top" secondItem="lsW-Vw-oou" secondAttribute="bottom" constant="26" id="Ln1-vq-SZ6"/>
+                            <constraint firstItem="96v-6O-7jf" firstAttribute="top" secondItem="FCD-wK-Hhz" secondAttribute="bottom" constant="49" id="PnY-f5-xro"/>
                             <constraint firstItem="96v-6O-7jf" firstAttribute="trailing" secondItem="lsW-Vw-oou" secondAttribute="trailing" id="Q8O-ex-alO"/>
+                            <constraint firstItem="FCD-wK-Hhz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="98" id="UJB-Bx-An7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FIf-3y-EOY" secondAttribute="bottom" constant="30" id="Xg1-Uo-HQz"/>
+                            <constraint firstItem="uBA-sU-mWn" firstAttribute="centerX" secondItem="3y6-eC-z1c" secondAttribute="centerX" id="crQ-Zd-urv"/>
                             <constraint firstItem="96v-6O-7jf" firstAttribute="leading" secondItem="lsW-Vw-oou" secondAttribute="leading" id="dLe-fl-2zl"/>
                             <constraint firstItem="FIf-3y-EOY" firstAttribute="top" secondItem="rDX-3P-4ns" secondAttribute="bottom" constant="41" id="h5l-IR-Ukk"/>
                             <constraint firstItem="96v-6O-7jf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="233" id="jGD-mm-V3c"/>
                             <constraint firstItem="96v-6O-7jf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="68" id="jtv-x2-ouU"/>
+                            <constraint firstItem="FCD-wK-Hhz" firstAttribute="centerX" secondItem="96v-6O-7jf" secondAttribute="centerX" id="qZb-fa-9dn"/>
+                            <constraint firstItem="3y6-eC-z1c" firstAttribute="centerX" secondItem="lsW-Vw-oou" secondAttribute="centerX" id="xcI-eZ-aq3"/>
+                            <constraint firstItem="uBA-sU-mWn" firstAttribute="top" secondItem="3y6-eC-z1c" secondAttribute="bottom" constant="35" id="xfE-Ud-pck"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="errorLabel" destination="uBA-sU-mWn" id="d9A-06-wa6"/>
                         <outlet property="passwordInput" destination="lsW-Vw-oou" id="e18-q5-DnU"/>
@@ -113,7 +132,7 @@
                             <constraint firstItem="Fse-TC-KTK" firstAttribute="top" secondItem="LM9-yn-zDB" secondAttribute="bottom" id="vUt-bt-Fn5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="o6V-0n-8eS"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="Map" selectedImage="Map" id="o6V-0n-8eS"/>
                     <navigationItem key="navigationItem" title="On The Map" id="g9y-kU-svQ">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="rlR-sa-PMK">
                             <connections>
@@ -172,7 +191,7 @@
                             <constraint firstItem="wRh-Vc-hh6" firstAttribute="top" secondItem="zrR-zD-Lsu" secondAttribute="bottom" id="zXY-Pq-mGa"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Locations" id="JqP-Na-SCo"/>
+                    <tabBarItem key="tabBarItem" title="Locations" image="List" selectedImage="List" id="JqP-Na-SCo"/>
                     <connections>
                         <outlet property="tableView" destination="wRh-Vc-hh6" id="kGA-WV-XvX"/>
                     </connections>
@@ -429,6 +448,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="List" width="32" height="32"/>
+        <image name="Map" width="32" height="32"/>
         <image name="Pin" width="32" height="32"/>
+        <image name="UdacityLogo" width="80" height="80"/>
     </resources>
 </document>

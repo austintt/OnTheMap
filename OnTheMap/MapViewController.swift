@@ -21,9 +21,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         super.viewDidLoad()
         
         mapView.delegate = self
-        self.navigationItem.rightBarButtonItems?[0].isEnabled = false
-        self.navigationItem.rightBarButtonItems?[1].isEnabled = false
-        self.toggleNavButtonsActive()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,7 +66,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
                     ServiceManager.sharedInstance().locations = locations
                     // Add pins to the map
                     self.addPins(locations: locations)
-//                    self.toggleNavButtonsActive()
                 }
             }
         }
@@ -140,7 +136,5 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         for button in self.navigationItem.rightBarButtonItems! {
             button.isEnabled = !button.isEnabled
         }
-    }
-    
-    
+    }    
 }

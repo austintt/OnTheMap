@@ -19,10 +19,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Debug
-        usernameInput.text = "Tooley7@gmail.com"
-        passwordInput.text = "4iU8ekQ&/M74XZ;{"
-        
         //Hide error label
         errorLabel.isHidden = true
     }
@@ -30,6 +26,7 @@ class LoginViewController: UIViewController {
     private func setErrorMessage(message: String) {
         errorLabel.text = message
         errorLabel.isHidden = false
+        spinner.isHidden = true
     }
     
     private func completeLogin() {
@@ -106,9 +103,7 @@ class LoginViewController: UIViewController {
             } else {
                
             }
-            
         }
-        
     }
 }
 
