@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
@@ -18,6 +18,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Text fields
+        usernameInput.delegate = self
+        passwordInput.delegate = self
         
         //Hide error label
         errorLabel.isHidden = true
@@ -104,6 +108,11 @@ class LoginViewController: UIViewController {
                
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
 }
 
