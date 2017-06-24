@@ -12,6 +12,7 @@ class ServiceManager: NSObject {
     
     // MARK: Initializer
     var session = URLSession.shared
+    var locations = [Location]()
  
     
     // MARK:  POST

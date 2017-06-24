@@ -27,7 +27,11 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        getLocations()
+        
+        // Don't fetch locations again if we already have them
+        if ServiceManager.sharedInstance().locations.isEmpty {
+            getLocations()
+        }
     }
     
     // Mark: Navigation bar
@@ -62,7 +66,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
                 print("Success!!!")
                 
                 if let locations = locations {
-                    
+                    ServiceManager.sharedInstance().locations = locations
                     // Add pins to the map
                     self.addPins(locations: locations)
 //                    self.toggleNavButtonsActive()

@@ -22,6 +22,7 @@
 		D97ABD5D1E7490520074EA22 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5C1E7490520074EA22 /* UdacityClient.swift */; };
 		D97ABD5F1E74A5930074EA22 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */; };
 		D9A9D9A11EFEADD100D785A6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A9D9A01EFEADD100D785A6 /* TabBarViewController.swift */; };
+		D9A9D9A31EFEB5AB00D785A6 /* LocationTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A9D9A21EFEB5AB00D785A6 /* LocationTableTableViewController.swift */; };
 		D9C5D4251E99694A008584D9 /* AddLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C5D4241E99694A008584D9 /* AddLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		D97ABD5C1E7490520074EA22 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		D9A9D9A01EFEADD100D785A6 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		D9A9D9A21EFEB5AB00D785A6 /* LocationTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableTableViewController.swift; sourceTree = "<group>"; };
 		D9C5D4241E99694A008584D9 /* AddLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +115,7 @@
 				D929749E1E8F5B5300C7B3D1 /* MapViewController.swift */,
 				D9C5D4241E99694A008584D9 /* AddLocationViewController.swift */,
 				D9A9D9A01EFEADD100D785A6 /* TabBarViewController.swift */,
+				D9A9D9A21EFEB5AB00D785A6 /* LocationTableTableViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				D90FB4F91E91BA25005485AE /* ServiceManager.swift in Sources */,
 				D97ABD5D1E7490520074EA22 /* UdacityClient.swift in Sources */,
 				D90FB4FB1E91C18C005485AE /* Location.swift in Sources */,
+				D9A9D9A31EFEB5AB00D785A6 /* LocationTableTableViewController.swift in Sources */,
 				D97ABD401E748C5E0074EA22 /* LoginViewController.swift in Sources */,
 				D97ABD501E748DB30074EA22 /* GCDBlackBox.swift in Sources */,
 				D9C5D4251E99694A008584D9 /* AddLocationViewController.swift in Sources */,
