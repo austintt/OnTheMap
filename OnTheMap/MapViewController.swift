@@ -136,5 +136,10 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         for button in self.navigationItem.rightBarButtonItems! {
             button.isEnabled = !button.isEnabled
         }
-    }    
+    }
+    
+    // Refresh
+    //    @IBAction func refreshMap(_ sender: Any) {
+    //        getLocations()
+    //    }
 }
