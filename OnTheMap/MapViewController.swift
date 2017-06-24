@@ -136,10 +136,6 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
         }
     }
     
-    // Mark: Tab bar
-    // List view
-    
-    
     func toggleNavButtonsActive() {
         for button in self.navigationItem.rightBarButtonItems! {
             button.isEnabled = !button.isEnabled

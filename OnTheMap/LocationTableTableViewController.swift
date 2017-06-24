@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class LocationTableTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -42,13 +43,27 @@ class LocationTableTableViewController: UIViewController, UITableViewDelegate, U
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
         // Set cell content
-        cell.textLabel?.text = ServiceManager.sharedInstance().locations[indexPath.row].firstName
+        if let firstName = ServiceManager.sharedInstance().locations[indexPath.row].firstName, let lastName = ServiceManager.sharedInstance().locations[indexPath.row].lastName {
+            cell.textLabel?.text = "\(firstName) \(lastName)"
+        }
+        
         return cell
     }
     
     // Cell was tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.row).")
+        if let urlString = ServiceManager.sharedInstance().locations[indexPath.row].mediaURL {
+            // Handel missing http
+            var formattedURL = urlString
+            if (!(urlString.contains("http"))) {
+                formattedURL = "http://\(urlString)"
+            }
+            
+            if let url = URL(string: (formattedURL)) {
+                let safariVC = SFSafariViewController(url: url)
+                present(safariVC, animated: true, completion: nil)
+            }
+        }
     }
 
 }
