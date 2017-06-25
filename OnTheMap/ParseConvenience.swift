@@ -10,7 +10,7 @@ import Foundation
 
 extension ServiceManager {
     
-    func getStudentLocations(parameters: [String:AnyObject], completionHandlerForStudentLocations: @escaping (_ locations: [Location]?, _ error: NSError?) -> Void) {
+    func getStudentLocations(parameters: [String:AnyObject], completionHandlerForStudentLocations: @escaping ( _ error: NSError?) -> Void) {
     
         // Set the params, method
         let parametersWithKey = parameters
@@ -22,14 +22,15 @@ extension ServiceManager {
             
             // Send values to completion handler
             if let error = error {
-                completionHandlerForStudentLocations(nil, error)
+                completionHandlerForStudentLocations(error)
             } else {
 //                print("Locations: \(results)")
                 //Convert to Location objects
                 let locations = self.parseLocationFromJson(results: results as! [String : AnyObject])
                 
                 // Return successfully
-                completionHandlerForStudentLocations(locations, nil)
+                StudentDataSource.sharedInstance.studentData = locations
+                completionHandlerForStudentLocations(nil)
             }
         }
         

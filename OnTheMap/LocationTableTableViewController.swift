@@ -21,7 +21,11 @@ class LocationTableTableViewController: UIViewController, UITableViewDelegate, U
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,7 +37,7 @@ class LocationTableTableViewController: UIViewController, UITableViewDelegate, U
 
     // Number of rows in table view
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ServiceManager.sharedInstance().locations.count
+        return StudentDataSource.sharedInstance.studentData.count
     }
     
     // Create a cell for each table view row
@@ -43,7 +47,7 @@ class LocationTableTableViewController: UIViewController, UITableViewDelegate, U
         let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell!
         
         // Set cell content
-        if let firstName = ServiceManager.sharedInstance().locations[indexPath.row].firstName, let lastName = ServiceManager.sharedInstance().locations[indexPath.row].lastName {
+        if let firstName = StudentDataSource.sharedInstance.studentData[indexPath.row].firstName, let lastName = StudentDataSource.sharedInstance.studentData[indexPath.row].lastName {
             cell.textLabel?.text = "\(firstName) \(lastName)"
         }
         
@@ -52,7 +56,7 @@ class LocationTableTableViewController: UIViewController, UITableViewDelegate, U
     
     // Cell was tapped
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let urlString = ServiceManager.sharedInstance().locations[indexPath.row].mediaURL {
+        if let urlString = StudentDataSource.sharedInstance.studentData[indexPath.row].mediaURL {
             // Handel missing http
             var formattedURL = urlString
             if (!(urlString.contains("http"))) {
@@ -60,8 +64,7 @@ class LocationTableTableViewController: UIViewController, UITableViewDelegate, U
             }
             
             if let url = URL(string: (formattedURL)) {
-                let safariVC = SFSafariViewController(url: url)
-                present(safariVC, animated: true, completion: nil)
+                UIApplication.shared.open(url, options: [:])
             }
         }
     }

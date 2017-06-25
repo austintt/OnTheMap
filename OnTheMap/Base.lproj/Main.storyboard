@@ -209,7 +209,7 @@
                                                 <rect key="frame" x="77" y="77" width="220" height="26"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -302,7 +302,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waL-KB-iHe">
                                         <rect key="frame" x="0.0" y="558" width="375" height="101"/>
@@ -348,6 +348,11 @@
                                     <action selector="cancel:" destination="g48-Ky-ZWq" eventType="touchUpInside" id="vj8-ih-URy"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="JS2-rG-Jlo">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" red="0.20392156859999999" green="0.59607843140000005" blue="0.85882352939999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -367,6 +372,7 @@
                         <outlet property="locationField" destination="ZlF-OL-j7a" id="8EF-cu-SbM"/>
                         <outlet property="locationQuestionView" destination="cQ6-ZG-CoK" id="HGP-vh-7je"/>
                         <outlet property="mapView" destination="QhM-7R-dAO" id="eTx-vq-OY1"/>
+                        <outlet property="spinner" destination="JS2-rG-Jlo" id="S7m-B1-vrV"/>
                         <outlet property="urlField" destination="ADT-PO-qki" id="RnK-ne-awy"/>
                         <outlet property="urlQuesitonView" destination="gT7-Ov-qag" id="rTg-eg-bcp"/>
                     </connections>

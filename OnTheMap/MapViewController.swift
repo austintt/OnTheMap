@@ -55,18 +55,24 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
     
     func getLocations() {
         // Get 100 pins and display
-        let params = [ServiceManager.ParemeterKeys.Limit: 100, ServiceManager.ParemeterKeys.Skip: 0]
-        ServiceManager.sharedInstance().getStudentLocations(parameters: params as [String : AnyObject]) { (locations, error) in
+        let params = [ServiceManager.ParemeterKeys.Limit: 100, ServiceManager.ParemeterKeys.Order: "-updatedAt", ServiceManager.ParemeterKeys.Skip: 0] as [String : AnyObject]
+        ServiceManager.sharedInstance().getStudentLocations(parameters: params as [String : AnyObject]) { (error) in
             if let error = error {
-                print("We got an error: \(error)")
+                // Make alert
+                performUIUpdatesOnMain(){
+                    let alertController = UIAlertController(title: "Error", message: "Issue getting locations: \(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                        (result : UIAlertAction) -> Void in
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present alert
+                    self.present(alertController, animated: true, completion: nil)
+                }
             } else {
                 print("Success!!!")
-                
-                if let locations = locations {
-                    ServiceManager.sharedInstance().locations = locations
-                    // Add pins to the map
-                    self.addPins(locations: locations)
-                }
+                // Add pins to the map
+                self.addPins(locations: StudentDataSource.sharedInstance.studentData)
             }
         }
     }
@@ -125,8 +131,12 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
                 }
     
                 if let url = URL(string: (formattedURL)!) {
-                    let safariVC = SFSafariViewController(url: url)
-                    present(safariVC, animated: true, completion: nil)
+                    // SafariVC
+                    //let safariVC = SFSafariViewController(url: url)
+                    //present(safariVC, animated: true, completion: nil)
+                    
+                    // Or exit app and open url in safari
+                    UIApplication.shared.open(url, options: [:])
                 }
             }
         }

@@ -10,6 +10,7 @@
 		D90FB4F51E904A16005485AE /* ParseConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90FB4F41E904A16005485AE /* ParseConvenience.swift */; };
 		D90FB4F91E91BA25005485AE /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90FB4F81E91BA25005485AE /* ServiceManager.swift */; };
 		D90FB4FB1E91C18C005485AE /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90FB4FA1E91C18C005485AE /* Location.swift */; };
+		D91A288F1F004CD90086B90D /* StudentDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91A288E1F004CD90086B90D /* StudentDataSource.swift */; };
 		D929749F1E8F5B5300C7B3D1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D929749E1E8F5B5300C7B3D1 /* MapViewController.swift */; };
 		D973AAA81EBE5D3A0053C538 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D973AAA71EBE5D3A0053C538 /* User.swift */; };
 		D97ABD3E1E748C5E0074EA22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD3D1E748C5E0074EA22 /* AppDelegate.swift */; };
@@ -19,7 +20,6 @@
 		D97ABD481E748C5E0074EA22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97ABD461E748C5E0074EA22 /* LaunchScreen.storyboard */; };
 		D97ABD501E748DB30074EA22 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD4F1E748DB30074EA22 /* GCDBlackBox.swift */; };
 		D97ABD5B1E748EA30074EA22 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5A1E748EA30074EA22 /* Constants.swift */; };
-		D97ABD5D1E7490520074EA22 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5C1E7490520074EA22 /* UdacityClient.swift */; };
 		D97ABD5F1E74A5930074EA22 /* UdacityConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */; };
 		D9A9D9A11EFEADD100D785A6 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A9D9A01EFEADD100D785A6 /* TabBarViewController.swift */; };
 		D9A9D9A31EFEB5AB00D785A6 /* LocationTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A9D9A21EFEB5AB00D785A6 /* LocationTableTableViewController.swift */; };
@@ -30,6 +30,7 @@
 		D90FB4F41E904A16005485AE /* ParseConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseConvenience.swift; sourceTree = "<group>"; };
 		D90FB4F81E91BA25005485AE /* ServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		D90FB4FA1E91C18C005485AE /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D91A288E1F004CD90086B90D /* StudentDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDataSource.swift; sourceTree = "<group>"; };
 		D929749E1E8F5B5300C7B3D1 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		D973AAA71EBE5D3A0053C538 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D97ABD3A1E748C5E0074EA22 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,7 +42,6 @@
 		D97ABD491E748C5E0074EA22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D97ABD4F1E748DB30074EA22 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		D97ABD5A1E748EA30074EA22 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D97ABD5C1E7490520074EA22 /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConvenience.swift; sourceTree = "<group>"; };
 		D9A9D9A01EFEADD100D785A6 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		D9A9D9A21EFEB5AB00D785A6 /* LocationTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationTableTableViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +96,7 @@
 			children = (
 				D90FB4FA1E91C18C005485AE /* Location.swift */,
 				D973AAA71EBE5D3A0053C538 /* User.swift */,
+				D91A288E1F004CD90086B90D /* StudentDataSource.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -143,7 +144,6 @@
 				D90FB4F81E91BA25005485AE /* ServiceManager.swift */,
 				D97ABD5E1E74A5930074EA22 /* UdacityConvenience.swift */,
 				D90FB4F41E904A16005485AE /* ParseConvenience.swift */,
-				D97ABD5C1E7490520074EA22 /* UdacityClient.swift */,
 				D97ABD591E748E7A0074EA22 /* Facebook */,
 			);
 			name = Clients;
@@ -230,12 +230,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D90FB4F91E91BA25005485AE /* ServiceManager.swift in Sources */,
-				D97ABD5D1E7490520074EA22 /* UdacityClient.swift in Sources */,
 				D90FB4FB1E91C18C005485AE /* Location.swift in Sources */,
 				D9A9D9A31EFEB5AB00D785A6 /* LocationTableTableViewController.swift in Sources */,
 				D97ABD401E748C5E0074EA22 /* LoginViewController.swift in Sources */,
 				D97ABD501E748DB30074EA22 /* GCDBlackBox.swift in Sources */,
 				D9C5D4251E99694A008584D9 /* AddLocationViewController.swift in Sources */,
+				D91A288F1F004CD90086B90D /* StudentDataSource.swift in Sources */,
 				D97ABD5B1E748EA30074EA22 /* Constants.swift in Sources */,
 				D97ABD3E1E748C5E0074EA22 /* AppDelegate.swift in Sources */,
 				D973AAA81EBE5D3A0053C538 /* User.swift in Sources */,

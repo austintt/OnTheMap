@@ -48,6 +48,31 @@ extension ServiceManager {
             }
         }
     }
+    // https://classroom.udacity.com/nanodegrees/nd003/parts/99f2246b-fb9e-41a9-9834-3b7db87f7628/modules/0e6213b2-bc78-490c-a967-f67fa258ed12/lessons/3071699113239847/concepts/32465f80-b475-44bb-82a8-677ca1c808b2
+    func deleteSession(completionHandlerForDeleteSession: @escaping (_ error: NSError?) -> Void) {
+        let request = NSMutableURLRequest(url: URL(string: "https://www.udacity.com/api/session")!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request as URLRequest) { data, response, error in
+            if error != nil {
+                completionHandlerForDeleteSession(error as! NSError)
+                return
+            }
+            let range = Range(5..<data!.count)
+            let newData = data?.subdata(in: range) /* subset response data! */
+            print(NSString(data: newData!, encoding: String.Encoding.utf8.rawValue)!)
+            completionHandlerForDeleteSession(nil)
+        }
+        task.resume()
+    }
     
     func getStudentInfo(parameters: [String:AnyObject], completionHandlerForStudentInfo: @escaping (_ error: NSError?) -> Void) {
         // Set params

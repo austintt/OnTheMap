@@ -22,13 +22,31 @@ class TabBarViewController: UITabBarController {
     @IBAction func logout(_ sender: Any) {
         print("Logging out")
         
-        // Wipe session
-        ServiceManager.User.sessionID = ""
-        ServiceManager.User.accountKey = ""
+        ServiceManager.sharedInstance().deleteSession() { (error) in
         
-        // Return to login
-        performUIUpdatesOnMain {
-            self.dismiss(animated: true, completion: nil)
+            if let error = error {
+                // Make alert
+                performUIUpdatesOnMain(){
+                    let alertController = UIAlertController(title: "Error", message: "Issue logging out: \(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                        (result : UIAlertAction) -> Void in
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present alert
+                    self.present(alertController, animated: true, completion: nil)
+                }
+
+            } else {
+                // Wipe session
+                ServiceManager.User.sessionID = ""
+                ServiceManager.User.accountKey = ""
+                
+                // Return to login
+                performUIUpdatesOnMain {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
         }
     }
     
