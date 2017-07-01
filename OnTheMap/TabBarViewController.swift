@@ -27,7 +27,7 @@ class TabBarViewController: UITabBarController {
             if let error = error {
                 // Make alert
                 performUIUpdatesOnMain(){
-                    let alertController = UIAlertController(title: "Error", message: "Issue logging out: \(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertController = UIAlertController(title: "Error", message: "Issue logging out: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
                     let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
                         (result : UIAlertAction) -> Void in
                     }

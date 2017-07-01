@@ -60,7 +60,7 @@ class MapViewController: UIViewController, UINavigationControllerDelegate, MKMap
             if let error = error {
                 // Make alert
                 performUIUpdatesOnMain(){
-                    let alertController = UIAlertController(title: "Error", message: "Issue getting locations: \(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    let alertController = UIAlertController(title: "Error", message: "Issue getting locations: \(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.alert)
                     let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
                         (result : UIAlertAction) -> Void in
                     }

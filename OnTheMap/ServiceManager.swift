@@ -45,7 +45,11 @@ class ServiceManager: NSObject {
             
             // GUARD, did we get a successful 2XX response?
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Bad response status code! \((response as? HTTPURLResponse)?.statusCode)")
+                if (response as? HTTPURLResponse)?.statusCode == 403 {
+                    sendError("403 - Incorrect credtntials.")
+                } else {
+                    sendError("Network failure. HTTP Code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
+                }
                 return
             }
             
@@ -97,9 +101,15 @@ class ServiceManager: NSObject {
                 return
             }
             
+            
+            
             // GUARD: Did we get a successful 2XX response?
             guard let statusCode = (response as? HTTPURLResponse)?.statusCode, statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx! \((response as? HTTPURLResponse)?.statusCode)")
+                if (response as? HTTPURLResponse)?.statusCode == 403 {
+                    sendError("403: Incorrect credtntials.")
+                } else {
+                    sendError("Network failure. HTTP Code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))")
+                }
                 return
             }
             

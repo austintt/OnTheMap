@@ -74,7 +74,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 // Display error
                 if let error = error {
                     print(error)
-                    self.setErrorMessage(message: "Error logging in")
+                    self.setErrorMessage(message: "Error logging in: \(error.localizedDescription)")
                 } else {
                     print("Post session did succeed: \(didSucceed)")
                     if didSucceed {
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Check for error
             if let error = error {
                 print(error)
-                self.setErrorMessage(message: "Error logging in")
+                self.setErrorMessage(message: "Error logging in: \(error.localizedDescription)")
             } else {
                
             }

@@ -45,15 +45,15 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
             
             // Search
             let search = MKLocalSearch(request: request)
+            self.spinner.startAnimating()
             search.start(completionHandler: {(response, error) in
-                if error != nil {
-                    self.showError(error: "Error finding location: \(error)")
+                if let error = error {
+                    self.showError(error: "Error finding location: \(error.localizedDescription)")
                     self.spinner.stopAnimating()
                     return
                 }
                 
                 // Make point
-                self.spinner.startAnimating()
                 let point = MKPointAnnotation()
                 point.coordinate = CLLocationCoordinate2D(latitude: response!.boundingRegion.center.latitude, longitude: response!.boundingRegion.center.longitude)
                 let pinView = MKPinAnnotationView(annotation: point, reuseIdentifier: "pin")
@@ -93,7 +93,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
             ServiceManager.sharedInstance().postStudentLocation(newLocation) { (didSucceed, error) in
                 
                 if let error = error {
-                    self.showError(error: "Error posting new location \(error)")
+                    self.showError(error: "Error posting new location \(error.localizedDescription)")
                 } else {
                     print("Success posting")
                     
@@ -107,6 +107,7 @@ class AddLocationViewController: UIViewController, UITextFieldDelegate {
     func prepareForNextQuestion() {
         locationQuestionView.isHidden = true
         urlQuesitonView.isHidden = false
+        view.bringSubview(toFront: spinner)
     }
     
     // MARK: Misc
